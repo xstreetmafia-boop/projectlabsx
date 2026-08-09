@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { buildGlyphCache, drawGlyph, randomNoiseChar } from "@/lib/pixelGlyph";
 
-const CHARSET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const CHARSET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ-";
 
 const HEIGHT = 480;
 const FONT_PX = 320;
