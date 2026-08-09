@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PixelHero from "@/components/PixelHero";
 import TextLoopRibbon from "@/components/TextLoopRibbon";
 import ZectPixelArt from "@/components/ZectPixelArt";
 
@@ -129,9 +130,49 @@ export default function Home() {
       </section>
 
       <footer className="border-t border-border">
-        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-10 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>© 2026 Project Labs X. All rights reserved.</p>
-          <p>Design &amp; AI research studio — Kozhikode, Kerala.</p>
+        <div className="mx-auto flex max-w-6xl flex-col gap-10 px-6 pt-16 sm:flex-row sm:items-start sm:justify-between">
+          <p className="text-lg text-muted">Let&apos;s build something worth shipping.</p>
+          <div className="flex gap-16">
+            <div>
+              <p className="text-sm text-muted">Site</p>
+              <nav className="mt-4 flex flex-col gap-2 text-sm">
+                <Link href="/" className="hover:text-accent-soft">
+                  Home
+                </Link>
+                <Link href="/work" className="hover:text-accent-soft">
+                  Work
+                </Link>
+                <Link href="/about" className="hover:text-accent-soft">
+                  About
+                </Link>
+                <Link href="/research" className="hover:text-accent-soft">
+                  Research
+                </Link>
+              </nav>
+            </div>
+            <div>
+              <p className="text-sm text-muted">Contact</p>
+              <div className="mt-4 flex flex-col gap-2 text-sm">
+                <a href="mailto:projecthekalabs@gmail.com" className="hover:text-accent-soft">
+                  Email
+                </a>
+                <Link href="/contact" className="hover:text-accent-soft">
+                  Contact page
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="overflow-hidden px-6 py-8">
+          <PixelHero word="PROJECT-LABSX" maxWidth={2400} />
+        </div>
+
+        <div className="border-t border-border">
+          <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
+            <p>© 2026 Project Labs X. All rights reserved.</p>
+            <p>Design &amp; AI research studio — Kozhikode, Kerala.</p>
+          </div>
         </div>
       </footer>
     </div>
