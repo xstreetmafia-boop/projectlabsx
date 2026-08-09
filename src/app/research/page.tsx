@@ -1,4 +1,17 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Research",
+  description:
+    "PLX Research — the R&D arm of Project Labs X, building PLX-X1 to accelerate how AI itself gets built. Security, biosecurity, mechanical, and compute research.",
+  alternates: { canonical: "/research" },
+  openGraph: {
+    title: "Research — Project Labs X",
+    description: "PLX Research — building PLX-X1 to accelerate how AI itself gets built.",
+    url: "/research",
+  },
+};
 
 const exchange = [
   {

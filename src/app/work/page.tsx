@@ -1,8 +1,21 @@
+import type { Metadata } from "next";
 import type { ShowcaseTab } from "@/components/WorkShowcase";
 import WorkBackground from "@/components/WorkBackground";
 import WorkHero from "@/components/WorkHero";
 import WorkProcess from "@/components/WorkProcess";
 import WorkShowcase from "@/components/WorkShowcase";
+
+export const metadata: Metadata = {
+  title: "Work",
+  description:
+    "Selected work from Project Labs X — live sites, product builds, and process, including ProjectLabsX, DEMO E-Commerce, Surya Communication, and PropXLabs.",
+  alternates: { canonical: "/work" },
+  openGraph: {
+    title: "Work — Project Labs X",
+    description: "Selected work from Project Labs X — live sites, product builds, and process.",
+    url: "/work",
+  },
+};
 
 const showcaseTabs: ShowcaseTab[] = [
   { type: "site", label: "ProjectLabsX", tag: "Flagship", url: "https://www.projectlabsx.com/" },

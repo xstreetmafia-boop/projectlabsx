@@ -218,9 +218,11 @@ export default function ZectPixelArt() {
 
   return (
     <div className="flex min-h-screen w-full items-center justify-center bg-black">
+      <h1 className="sr-only">Project Labs X — Design, Development &amp; AI Research Studio</h1>
       <canvas
         ref={canvasRef}
         style={{ width: "100%", maxWidth: 900, height: "auto", imageRendering: "pixelated" }}
+        aria-hidden="true"
       />
     </div>
   );

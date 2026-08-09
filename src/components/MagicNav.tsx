@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import MobileMagicMenu from "@/components/MobileMagicMenu";
 
 const NAV_ITEMS = [
   { label: "HOME", href: "/" },
@@ -70,6 +71,7 @@ export default function MagicNav() {
   const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const mouseRef = useRef({ x: 0, y: 0, active: false });
   const focusIndexRef = useRef(-1);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const glyphs = buildGlyphCache();
@@ -265,35 +267,77 @@ export default function MagicNav() {
   }, []);
 
   return (
-    <div className="pointer-events-none fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4">
-      <div
-        ref={containerRef}
-        className="relative pointer-events-auto flex items-center gap-8 rounded-full bg-black/40 px-8 py-3 backdrop-blur-md"
-      >
-        <nav className="flex items-center gap-8">
-          {NAV_ITEMS.map((item, idx) => (
-            <a
-              key={item.label}
-              href={item.href}
-              data-label={item.label}
-              ref={(el) => {
-                linkRefs.current[idx] = el;
-              }}
-              onFocus={() => {
-                focusIndexRef.current = idx;
-              }}
-              onBlur={() => {
-                focusIndexRef.current = -1;
-              }}
-              style={{ width: item.label.length * NAV_SLOT_W, height: NAV_SLOT_H }}
-              className="relative block rounded text-transparent outline-none focus-visible:ring-2 focus-visible:ring-[#a78bfa]"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-        <canvas ref={canvasRef} aria-hidden="true" className="pointer-events-none absolute inset-0" />
+    <>
+      {/* Desktop / tablet: the full metaball decode nav — cursor-driven, so it
+          only makes sense where hover exists. */}
+      <div className="pointer-events-none fixed top-0 left-0 right-0 z-50 hidden justify-center px-4 pt-4 sm:flex">
+        <div
+          ref={containerRef}
+          className="relative pointer-events-auto flex items-center gap-8 rounded-full bg-black/40 px-8 py-3 backdrop-blur-md"
+        >
+          <nav className="flex items-center gap-8">
+            {NAV_ITEMS.map((item, idx) => (
+              <a
+                key={item.label}
+                href={item.href}
+                data-label={item.label}
+                ref={(el) => {
+                  linkRefs.current[idx] = el;
+                }}
+                onFocus={() => {
+                  focusIndexRef.current = idx;
+                }}
+                onBlur={() => {
+                  focusIndexRef.current = -1;
+                }}
+                style={{ width: item.label.length * NAV_SLOT_W, height: NAV_SLOT_H }}
+                className="relative block rounded text-transparent outline-none focus-visible:ring-2 focus-visible:ring-[#a78bfa]"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+          <canvas ref={canvasRef} aria-hidden="true" className="pointer-events-none absolute inset-0" />
+        </div>
       </div>
-    </div>
+
+      {/* Mobile: liquid drag-metaball menu — touch has no hover, but it does
+          have a moving contact point, so the decode reacts to drag position
+          instead of cursor position. */}
+      <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-black/60 px-5 py-4 backdrop-blur-md sm:hidden">
+        <a href="/" className="text-sm font-bold tracking-widest text-foreground">
+          PROJECT-LABSX
+        </a>
+        <button
+          type="button"
+          onClick={() => setMobileOpen(true)}
+          aria-label="Open menu"
+          aria-expanded={mobileOpen}
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-border"
+        >
+          <span className="relative flex h-3 w-3">
+            <span className="animate-orb-pulse absolute inline-flex h-full w-full rounded-full bg-accent" />
+            <span className="relative inline-flex h-3 w-3 rounded-full bg-accent-soft" />
+          </span>
+        </button>
+      </div>
+
+      {mobileOpen && (
+        <div className="fixed inset-0 z-[60] flex flex-col bg-black/98 backdrop-blur-md sm:hidden">
+          <div className="flex items-center justify-between px-5 py-4">
+            <span className="text-sm font-bold tracking-widest text-foreground">PROJECT-LABSX</span>
+            <button
+              type="button"
+              onClick={() => setMobileOpen(false)}
+              aria-label="Close menu"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-xl"
+            >
+              ✕
+            </button>
+          </div>
+          <MobileMagicMenu items={NAV_ITEMS} onNavigate={() => setMobileOpen(false)} />
+        </div>
+      )}
+    </>
   );
 }

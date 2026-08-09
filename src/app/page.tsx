@@ -101,7 +101,7 @@ export default function Home() {
               research — end to end, for teams who want one team across the whole build.
             </p>
           </div>
-          <div className="grid grid-cols-3 gap-6 self-start">
+          <div className="grid grid-cols-3 gap-3 self-start sm:gap-6">
             {stats.map((stat) => (
               <div key={stat.label}>
                 <p className="text-3xl font-semibold tracking-tight text-accent">{stat.value}</p>

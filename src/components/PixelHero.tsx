@@ -15,7 +15,15 @@ const STEP = SLOT_W * 0.82;
 const REVEAL_INTERVAL = 90;
 const FLICKER_INTERVAL = 60;
 
-export default function PixelHero({ word, maxWidth = 1600 }: { word: string; maxWidth?: number }) {
+export default function PixelHero({
+  word,
+  maxWidth = 1600,
+  heading = false,
+}: {
+  word: string;
+  maxWidth?: number;
+  heading?: boolean;
+}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -85,13 +93,17 @@ export default function PixelHero({ word, maxWidth = 1600 }: { word: string; max
     };
   }, [word]);
 
+  const AccessibleText = heading ? "h1" : "span";
+
   return (
-    <canvas
-      ref={canvasRef}
-      style={{ width: "100%", maxWidth, height: "auto", imageRendering: "pixelated" }}
-      className="mx-auto"
-      aria-label={word}
-      role="img"
-    />
+    <div>
+      <AccessibleText className="sr-only">{word}</AccessibleText>
+      <canvas
+        ref={canvasRef}
+        style={{ width: "100%", maxWidth, height: "auto", imageRendering: "pixelated" }}
+        className="mx-auto"
+        aria-hidden="true"
+      />
+    </div>
   );
 }

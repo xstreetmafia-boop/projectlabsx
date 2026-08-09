@@ -1,6 +1,19 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import PixelHero from "@/components/PixelHero";
 import TeamGrid from "@/components/TeamGrid";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Project Labs X is a small studio out of Kozhikode, Kerala — design, development, and AI research under one roof. Meet the team and how we work.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About — Project Labs X",
+    description: "A small studio out of Kozhikode, Kerala — design, development, and AI research under one roof.",
+    url: "/about",
+  },
+};
 
 const services = [
   {
@@ -55,7 +68,7 @@ export default function AboutPage() {
         </svg>
 
         <div className="relative z-10">
-          <PixelHero word="ABOUT US" />
+          <PixelHero word="ABOUT US" heading />
           <p className="mx-auto mt-6 max-w-md text-muted">
             Project Labs X is a small studio out of Kozhikode, Kerala — design, development,
             and AI research under one roof. We ship fast, stay honest about where things
