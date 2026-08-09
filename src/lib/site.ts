@@ -1,7 +1,7 @@
-// Single source of truth for site-wide SEO values. The production domain
-// isn't finalized yet — update SITE_URL here once it is, and every page's
-// metadata, sitemap, robots, and JSON-LD will follow automatically.
-export const SITE_URL = "https://www.projectlabsx.com";
+// Single source of truth for site-wide SEO values. Update SITE_URL here if
+// the domain ever changes, and every page's metadata, sitemap, robots, and
+// JSON-LD will follow automatically.
+export const SITE_URL = "https://projectlabsx.vercel.app";
 export const SITE_NAME = "Project Labs X";
 export const SITE_TITLE = "Project Labs X — Design, Development & AI Research Studio";
 export const SITE_DESCRIPTION =
