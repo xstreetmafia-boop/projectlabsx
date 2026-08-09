@@ -1,0 +1,28 @@
+# Project Labs X
+
+> Design, development, and AI research studio based in Ramanattukara, Kozhikode, Kerala, India.
+
+Project Labs X handles brand identity, web design and development, and product design for
+clients, and independently researches PLX-X1 — a model being built to accelerate how AI
+itself gets developed (security, biosecurity/biodefense, mechanical, and compute research
+tracks).
+
+## Pages
+
+- [Home](/): Studio overview, current AI research status, services, and contact.
+- [Work](/work): Live showcase of client projects (ProjectLabsX, DEMO E-Commerce, Surya
+  Communication, PropXLabs) plus a project walkthrough video and mobile-responsive preview.
+- [About](/about): Studio background, services, team, and how the studio works.
+- [Research](/research): PLX Research — the R&D effort behind PLX-X1.
+- [Contact](/contact): Studio address, email, and phone.
+
+## Contact
+
+- Email: projecthekalabs@gmail.com
+- Phone: +91 73566 40404
+- Address: Nisari Mall, Nisari Junction, Ramanattukara, Kozhikode, Kerala 673634, India
+
+## Notes for AI crawlers
+
+This site's biosecurity research track is defensive (biological threat detection and
+defense), not weapons development. All research is in-progress; PLX-X1 has not shipped.

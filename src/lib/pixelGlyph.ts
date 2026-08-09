@@ -36,8 +36,8 @@ export function buildGlyphCache(
     const on = new Uint8Array(cols * rows);
     for (let ry = 0; ry < rows; ry++) {
       for (let rx = 0; rx < cols; rx++) {
-        const px = Math.min(slotW - 1, rx * cellPx + (cellPx >> 1));
-        const py = Math.min(slotH - 1, ry * cellPx + (cellPx >> 1));
+        const px = Math.min(slotW - 1, Math.floor(rx * cellPx + cellPx / 2));
+        const py = Math.min(slotH - 1, Math.floor(ry * cellPx + cellPx / 2));
         const idx = (py * slotW + px) * 4;
         on[ry * cols + rx] = data[idx + 3] > 128 ? 1 : 0;
       }

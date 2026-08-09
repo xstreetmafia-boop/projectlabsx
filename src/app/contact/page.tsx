@@ -1,5 +1,18 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import PixelHero from "@/components/PixelHero";
+import { SITE_EMAIL, SITE_PHONE } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description: `Get in touch with Project Labs X. Studio based in Ramanattukara, Kozhikode, Kerala. ${SITE_EMAIL} · ${SITE_PHONE}`,
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact — Project Labs X",
+    description: "Get in touch with Project Labs X — Ramanattukara, Kozhikode, Kerala.",
+    url: "/contact",
+  },
+};
 
 const landmarks = [
   { label: "NISARI JUNCTION", x: 46, y: 40 },
@@ -32,7 +45,7 @@ export default function ContactPage() {
         </svg>
 
         <div className="relative z-10">
-          <PixelHero word="CONTACT" />
+          <PixelHero word="CONTACT" heading />
           <p className="mx-auto mt-6 max-w-md text-muted">
             We work with clients everywhere from our studio. Drop us a line if you&apos;re
             starting something new — we&apos;d love to hear from you.
